@@ -1,0 +1,56 @@
+import random
+from roughwork import data
+
+again = True
+
+while again == True:
+    print("Welcome to higher/lower")
+
+    A = random.choice(data)
+
+    game = True
+
+    correct_ans = 0
+
+    while game == True:
+        B = random.choice(data)
+
+        A1 = A['name']
+        D1 = A['description']
+        C1 = A['country']
+        FC1 = A['follower_count']
+
+        print(f'Compare A: {A1}, a {D1},from {C1}')
+
+        B2 = B['name']
+        D2 = B['description']
+        C2 = B['country']
+        FC2 = B['follower_count']
+
+        print(f'Against B: {B2},a {D2},from {C2}')
+
+        choice = input("A or B:").lower()
+
+
+        if FC1 > FC2 and choice == 'a':
+            print("CORRECT")
+            correct_ans += 1
+            A = A
+        elif FC2 > FC1 and choice == 'b':
+            print("correct")
+            A = B
+            correct_ans += 1
+        else:
+            print("OOPS")
+            game = False
+
+        print(f"Your score is :{correct_ans}")
+
+    game_again = input("Would you like to play the game again?(yes or no):").lower()
+    if game_again == 'yes':
+        again = True
+    elif game_again == 'no':
+        again = False
+    else:
+        print("Wrong command")
+        again = False
